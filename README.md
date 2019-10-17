@@ -14,58 +14,13 @@ The tests are designed to understand what students can do and the skills they ha
 
 ## About ASER Dataset
 In order to facilitate deep learning research in automating reading assessments in India we present ASER dataset of children in the age group 6-14 years. 
-The dataset was generated using a custom mobile app and includes labeled audio clips of children reading out different levels of text in Hindi, Marathi and 
-English. The labels represent expert opinions on whether the child is qualified at the specified reading level. This dataset facilitates research in speech 
-and language processing, STT for Indian languages, prosody, combination of rhythm, stress, phonemes intonation, pace and reading styles of children.
+The dataset was generated using a custom mobile app and includes labeled audio clips of children reading out different levels of text in Hindi, Marathi and English. The labels represent expert opinions on whether the child is qualified at the specified reading level. This dataset facilitates research in speech and language processing, STT for Indian languages, prosody, combination of rhythm, stress, phonemes intonation, pace and reading styles of children.
 The goal of this work is to make this dataset public to spur innovation and generate novel solutions for automation of assessing reading levels. 
 
 The dataset consists of 5301 samples. Each sample consist of audio files and it's corresponding json file.
 Below we explain JSON file structure generated while collecting audio samples of ASER test (conducted manually) through Android app.	  
-			  
-### JSON File Description
-The JSON file is generated simultaneously while conducting the test. In the JSON Object, we keep proficiency of student as marked by the interviewer taking the test according to how the child performs in the test.
-
-Proficiency can be marked for 
-* Native language
-* Arithematic
-* English language.
-
-A child can be classified in any of the 5 Reading levels, 5 Arithematic levels and and 5 English Level. English Language test is optional.
-5 Reading levels are:
-- Beginner
-- Letter level
-- Word level
-- Paragraph level
-- Story level  
-
-5 Arithematic levels are: 
-- Beginner
-- Single Number recognition(0-9)
-- Double Number recognition(11-99)
-- Two digits number subtraction with borrowing
-- Three digit number division by one digit number
-
-5 English Levels are:
-- Capital Letter
-- Small Letter
-- Word
-- Sentence
-			
-In the JSONObject, there is a field called "sequenceList" which is a JSONArray containing all the questions that are attempted by students sequentially.
-			
-"isCorrect" field which represents whether the question/text was read out or answered correctly. If the interviewer marks the question as correct, the value of "isCorrect" is true, else it is false.
-			
-"noOfMistakes" field is used to get the number of mistakes done by the child while reading out sentence, paragraph and story. 
-
-In case of subtraction question, there is a "answer" field containing the answer given by student.
-
-In case of division question, there is a field called "answer" containing the quotient and "remainder" containing remainder as answered by the child.
-
-There is no answer field for the questions like letter, word, paragraph, story. Instead it contains a field "recordingName" which contains the filename of recorded audio clip.
-
-*Note:  "noOfMistakes" field of sequenceList is asked to CRL to enter only for Story, paragraph and sentence. Otherwise it is set to total number of mistakes done in that particular section (Word, Letter, Single Digit or Double Digit Number).
-
-For each language (Hindi and Marathi), there are 4 question sample sets. Each question sample set consists of 3 sections - the Reading, Mathematics and English tools. Each sample has a question_id in the format <b> language_SampleNo_level_count </b> explained in detail below:
+### Question Sample Set Description
+For each language (Hindi and Marathi), there are 4 question sample sets. Each question sample set consists of 2 sections - the Reading and English tools. Each sample has a question_id in the format <b> language_SampleNo_level_count </b> explained in detail below:
 Language = "HI" or "MR" (for Hindi, Marathi respectively)
 SampleNo can be S1, S2, S3, S4
 Count is the serial number count of the sample
@@ -95,23 +50,6 @@ The symbols used for level are described below.
     <td>Letter</td>
    </tr>
    <tr>
-    <td rowspan=4>Arithmetic Levels	</td>
-    <td>D</td>
-    <td>Division</td>
-   </tr>
-    <tr>
-    <td>SB</td>
-    <td>Subtraction</td>
-   </tr>
-   <tr>
-    <td>DD</td>
-    <td>Double Digit</td>
-   </tr>
-    <tr>
-    <td>SD</td>
-    <td>Single Digit</td>
-   </tr>
-     <tr>
     <td rowspan=4>English Levels	</td>
     <td>CL</td>
     <td>Capital Letter</td>
@@ -130,39 +68,101 @@ The symbols used for level are described below.
    </tr>
 </table>
 
+### JSON File Description
+The JSON file is generated simultaneously while conducting the test. In the JSON Object, we keep proficiency of student as marked by the interviewer taking the test according to how the child performs in the test.
+
+Proficiency can be marked for 
+* Native language
+* English language.
+
+A child can be classified in any of the 5 Reading levels, and 5 English Level. English Language test is optional.
+5 Reading levels are:
+- Beginner
+- Letter level
+- Word level
+- Paragraph level
+- Story level  
+
+5 English Levels are:
+- Capital Letter
+- Small Letter
+- Word
+- Sentence
+			
+In the JSONObject, there is a field called "sequenceList" which is a JSONArray containing all the questions that are attempted by students sequentially. The fields in the sequenceList is explained in the table below.
+
+<table>
+	<tr>
+		<th>Field</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>isCorrect</td>
+		<td>Represents whether the text/question was read out correctly (True) or not (False)</td>
+	</tr>
+	<tr>
+		<td>noOfMistakes</td>
+		<td>Represents the number of mistakes done while reading out sentence, paragraph or story</td>
+	</tr>
+	<tr>
+		<td>recordingName</td>
+		<td>Name of the recorded audioclip</td>
+	</tr>
+</table>
+
+*Note:  "noOfMistakes" field of sequenceList is asked to CRL to enter only for Story, paragraph and sentence. Otherwise it is set to total number of mistakes done in that particular section (Word/Letter).
+
 Example :	
 				
     {
     "ageGroup": "7-10 years",             // selected Agegroup of student
     "date": "Mon May 27 10:37:35 GMT+05:30 2019",  // system date
     "deviceID": "92ca9361fbd010ba",		// Id of device on which test is conducted
-    "englishProficiency": "word",		// Proficiency of english language marked by crl
-    "mathematicsProficiency": "Division",   // Proficiency of maths marked by crl
-    "nativeProficiency": "Paragraph",			// Proficiency of native language marked by crl
+    "englishProficiency": "word",		// Proficiency of english language marked
+    "nativeProficiency": "Paragraph",		// Proficiency of native language(Hindi/Marathi) marked
     "sequenceList": [         // sequencelist of attempted questions 
     {
-      "isCorrect": true,			// true or false marked by crl 
-      "noOfMistakes": "5",		// mistakes count entered by crl
+      "isCorrect": true,	// true or false to represent whether it was correct or incorrect
+      "noOfMistakes": "5",	// mistakes count
       "que_id": "MR_S2_P_0",	// Id of question -format(language_SampleNo_level_count)
       "que_text": "एकदा मी पडले. सगळे मला हसले. एकदा सोनल पडली. मी तिला हसले." ,     //question text
 	  "recordingName":"MR_S2_P_0.mp3"		// recording file Name(set as que_id)
 	  },
-    {
-      "answer": "10",            // answer given by student (answer field is only for subtraction and division)
-      "isCorrect": true,        // correct or incorrect marked by crl 
-      "noOfMistakes": "0",			// mistakes count entered by crl
-      "que_id": "MR_S2_SB_2",		// Id of question -format(language_SampleNo_level_count)
-      "que_text": "46 - 29"     // question text
-    },
-    
-    {
-      "answer": "20", 					// quotient given by student (answer field is only for subtraction and division)
-      "isCorrect": true,        // correct or incorrect marked by crl 
-      "noOfMistakes": "0",      // mistakes count entered by crl
-      "que_id": "MR_S2_D_3",	  // Id of question -format(language_SampleNo_level_count)
-      "que_text": "498 / 4", 		// question text
-      "remainder": "0"					// remainder given by student (only for division)
-    }
-    ],
+	  {
+		"isCorrect": true,
+		"noOfMistakes": "3",	 // Total number of mistakes done in the small letter section
+		"que_id": "MR_S2_SL_0",
+		"que_text": "z",
+		"recordingName": "MR_S2_SL_0.mp3"
+	},
+	{
+		"isCorrect": false,
+		"noOfMistakes": "3",
+		"que_id": "MR_S2_SL_4",
+		"que_text": "g",
+		"recordingName": "MR_S2_SL_4.mp3"
+	},
+	{
+		"isCorrect": false,
+		"noOfMistakes": "3",
+		"que_id": "MR_S2_SL_7",
+		"que_text": "k",
+		"recordingName": "MR_S2_SL_7.mp3"
+	},
+	{
+		"isCorrect": true,
+		"noOfMistakes": "3",
+		"que_id": "MR_S2_SL_2",
+		"que_text": "o",
+		"recordingName": "MR_S2_SL_2.mp3"
+	},
+	{
+		"isCorrect": false,
+		"noOfMistakes": "3",
+		"que_id": "MR_S2_SL_1",
+		"que_text": "j",
+		"recordingName": "MR_S2_SL_1.mp3"
+	}
+       ],
     "studClass": "5",          // class of student
     }
