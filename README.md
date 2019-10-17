@@ -21,10 +21,10 @@ The dataset consists of 5301 samples. Each sample consist of audio files and it'
 Below we explain the Question Sample set used and the JSON file structure generated while collecting audio samples of ASER test (conducted manually) through Android app.	  
 
 ### Question Sample Set Description
-For each language (Hindi and Marathi), there are 4 question sample sets. Each question sample set consists of 2 sections - the Reading and English tools. Each sample has a question_id in the format <b> language_SampleNo_level_count </b> explained in detail below:
-Language = "HI" or "MR" (for Hindi, Marathi respectively)
-SampleNo can be S1, S2, S3, S4
-Count is the serial number count of the sample
+For each language (Hindi and Marathi), there are 4 question sample sets. Each question sample set consists of 2 sections - the Reading and English tools. Each sample has a question_id in the format <b> language_SampleNo_level_count </b> explained in detail below:<br>
+Language = "HI" or "MR" (for Hindi, Marathi respectively)<br>
+SampleNo can be S1, S2, S3, S4<br>
+Count is the serial number count of the sample<br>
 The symbols used for level are described below. 
 
 <table>
