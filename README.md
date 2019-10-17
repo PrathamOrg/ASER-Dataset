@@ -18,7 +18,8 @@ The dataset was generated using a custom mobile app and includes labeled audio c
 The goal of this work is to make this dataset public to spur innovation and generate novel solutions for automation of assessing reading levels. 
 
 The dataset consists of 5301 samples. Each sample consist of audio files and it's corresponding json file.
-Below we explain JSON file structure generated while collecting audio samples of ASER test (conducted manually) through Android app.	  
+Below we explain the Question Sample set used and the JSON file structure generated while collecting audio samples of ASER test (conducted manually) through Android app.	  
+
 ### Question Sample Set Description
 For each language (Hindi and Marathi), there are 4 question sample sets. Each question sample set consists of 2 sections - the Reading and English tools. Each sample has a question_id in the format <b> language_SampleNo_level_count </b> explained in detail below:
 Language = "HI" or "MR" (for Hindi, Marathi respectively)
