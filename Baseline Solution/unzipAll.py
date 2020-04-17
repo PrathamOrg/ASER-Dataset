@@ -12,7 +12,12 @@ def unzipAll(dir_name, extension):
         if item.endswith(extension): # check for ".zip" extension
             file_name = os.path.abspath(item) # get full path of files
             zip_ref = zipfile.ZipFile(file_name) # create zipfile object
-            zip_ref.extractall(dir_name) # extract file to dir
+            fname = item.split('.')[0]
+            dir = os.path.join(dir_name,fname)
+            #print("Directory name now is: ",dir)
+            zip_ref.extractall(dir) # extract file to dir
+            
+            print(dir) # extract file to dir
             zip_ref.close() # close file
             os.remove(file_name) # delete zipped file
 
