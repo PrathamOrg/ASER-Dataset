@@ -1,5 +1,9 @@
 # ASER-Dataset
 
+## Citing
+If you are using any of the resources, please cite the following article:
+D. Agarwal, J. Gupchup and N. Baghel, "A Dataset for Measuring Reading Levels In India At Scale," ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), Barcelona, Spain, 2020, pp. 9210-9214, doi: 10.1109/ICASSP40776.2020.9053380.
+
 ## About Pratham
 Pratham was founded in 1995, to provide pre-school education to children in Mumbai slums. Over the last 20 years Pratham has grown to be India’s largest NGO working to provide quality education to underprivileged youth and 
 children in over 21 states and union territories across the country, with a range of interventions. Pratham is a widely recognized organization, having received notable awards such as the WISE Prize for Innovation, 
@@ -167,3 +171,4 @@ Example :
        ],
     "studClass": "5",          // class of student
     }
+
