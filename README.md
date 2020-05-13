@@ -2,7 +2,8 @@
 
 ## Citing
 If you are using any of the resources, please cite the following article:
-[D. Agarwal, J. Gupchup and N. Baghel, "A Dataset for Measuring Reading Levels In India At Scale," ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), Barcelona, Spain, 2020, pp. 9210-9214, doi: 10.1109/ICASSP40776.2020.9053380.] (https://ieeexplore.ieee.org/abstract/document/9053380)
+D. Agarwal, J. Gupchup and N. Baghel, "A Dataset for Measuring Reading Levels In India At Scale," ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), Barcelona, Spain, 2020, pp. 9210-9214, doi: 10.1109/ICASSP40776.2020.9053380. 
+(https://ieeexplore.ieee.org/abstract/document/9053380)
 												
 
 ## About Pratham
